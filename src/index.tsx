@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -7,6 +7,7 @@ import { createGlobalStyle } from 'styled-components';
 import reportWebVitals from './reportWebVitals';
 import { store } from './store';
 import { useAuth } from './components/Login/authSlice';
+import { Spinner } from './utils/widgets';
 
 const LoginPage = lazy(() => import('./pages/Login'));
 const DashboardPage = lazy(() => import('./pages/Dashboard'));
@@ -34,7 +35,11 @@ const GlobalStyle = createGlobalStyle`
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const auth = useAuth();
-  return auth ? <>children</> : <Navigate to='/login' replace />;
+  return auth ? <>{children}</> : <Navigate to='/login' replace />;
+}
+function PublicRoute({ children }: { children: React.ReactNode }) {
+  const auth = useAuth();
+  return auth ? <Navigate to='/' replace /> : <>{children}</>;
 }
 
 ReactDOM.render(
@@ -42,17 +47,23 @@ ReactDOM.render(
     <Provider store={store}>
       <GlobalStyle />
       <BrowserRouter>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <PrivateRoute>
-                <DashboardPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path='/login' element={<LoginPage />} />
-        </Routes>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <PrivateRoute>
+                  <DashboardPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path='/login' element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            } />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

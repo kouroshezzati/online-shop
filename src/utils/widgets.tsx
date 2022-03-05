@@ -98,3 +98,9 @@ export const FormButton = styled(Button)`
 export const Container = styled.div`
   height: 100vh;
 `;
+
+export const Error = styled.div`
+  color: red;
+  text-align: center;
+  padding: 1rem;
+`

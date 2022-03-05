@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Form, FormButton, Input, Spinner, Wrapper } from '../../utils/widgets';
+import { Error, Form, FormButton, Input, Spinner, Wrapper } from '../../utils/widgets';
 import { LoginRequest, useLoginMutation } from './auth.service';
-import { setCredentials } from './authSlice';
+import { setCredentials, useAuth } from './authSlice';
 
 export default function Login() {
   const [formState, setFormState] = useState<LoginRequest>({
@@ -57,6 +57,7 @@ export default function Login() {
         <FormButton disabled={isInvalid || isLoading}>
           {isLoading && <Spinner />} <span>Login</span>
         </FormButton>
+        {error && <Error>{error}</Error>}
       </Form>
     </Wrapper>
   );
