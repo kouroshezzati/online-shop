@@ -14,7 +14,7 @@ export interface UserResponse {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://reqres.in/api/',
+    baseUrl: 'http://localhost:3001/',
     prepareHeaders: (headers, { getState }) => {
       const { token } = (getState() as RootState).auth;
       if (token) {
@@ -28,6 +28,7 @@ export const api = createApi({
       query: (credentials) => ({
         url: 'login',
         method: 'POST',
+        'Content-type': 'application/json',
         body: credentials,
       }),
     }),
