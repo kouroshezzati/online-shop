@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Error, Form, FormButton, Input, Spinner, Wrapper } from '../../utils/widgets';
+import {
+  Error,
+  Form,
+  FormButton,
+  Input,
+  Spinner,
+  Wrapper,
+} from '../../utils/widgets';
 import { LoginRequest, useLoginMutation } from './auth.service';
-import { setCredentials, useAuth } from './authSlice';
+import { setCredentials } from './authSlice';
 
 export default function Login() {
   const [formState, setFormState] = useState<LoginRequest>({
@@ -34,7 +41,11 @@ export default function Login() {
       navigate('/');
     } catch (e: any) {
       console.log('Login error:', e);
-      setError(e.data.error);
+      if (e.error) {
+        setError(e.error);
+      } else {
+        setError(e.data.error);
+      }
     }
   };
   return (
@@ -55,9 +66,9 @@ export default function Login() {
           onChange={handleChange}
         />
         <FormButton disabled={isInvalid || isLoading}>
-          {isLoading && <Spinner />} <span>Login</span>
+          {isLoading && <Spinner data-testid='spinner' />} <span>Login</span>
         </FormButton>
-        {error && <Error>{error}</Error>}
+        {error && <Error data-testid='error'>{error}</Error>}
       </Form>
     </Wrapper>
   );

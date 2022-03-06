@@ -17,7 +17,7 @@ app.post('/login', (req, res) => {
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
     });
   }
-  return res.sendStatus(401);
+  return res.status(401).jsonp({ error: 'user not found' });
 });
 
 app.listen(port, () => {
