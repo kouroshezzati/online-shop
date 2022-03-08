@@ -45,7 +45,7 @@ describe('Admin page test', () => {
     fetchMock.mockResponse(JSON.stringify(products), { status: 200 });
     render(
       <MockWrapper>
-        <ProductList />
+        <ProductList theme='grid' />
       </MockWrapper>
     );
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));

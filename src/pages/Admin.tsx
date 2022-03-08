@@ -27,7 +27,7 @@ export default function AdminPage() {
     <div>
       <Wrapper>
         <AddProduct />
-        <ProductList />
+        <ProductList theme='grid' />
       </Wrapper>
       <LinkWrapper>
         <Link to='/shop'>Go to shop page</Link>
