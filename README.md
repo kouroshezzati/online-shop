@@ -1,15 +1,15 @@
 # Simple shopping website
 
-This project is build to show product items base on weight of each product.
-to add product go to admin page with root path 'http://localhost:3000/', but
-you need to login before go to admin page.
+This project is built to show product items based on the weight of each product.
+to add product, go to admin page with root path 'http://localhost:3000/', but
+you need to login before going to the admin page.
 for login enter `aco@gmail.com` for email input and `123` for password input;
-you can add a product and the number of the product that are exist. we assume all
-the products are `active` and are not expired.
-there are already 3 product types exist in the app, but you can add as much as you want.
-the 'http://localhost:3000/shop/' is the page that's public and you can visit the products
-and also define how many items to be shown, by default it shows all the items without any filter
-base on weight.
+you can add a product and the number of the products that exist. We assume all
+the products are `active` and are not expired although the query filters expired data.
+there are already 3 product types that exist in the app, but you can add as much as you want.
+the 'http://localhost:3000/shop/' is the page that's public and you can visit the products.
+and also define how many items to be shown (not more than total products),
+by default it shows all the items without any filter based on weight.
 
 ## Available Scripts
 
