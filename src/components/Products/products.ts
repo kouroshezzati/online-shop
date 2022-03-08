@@ -8,7 +8,7 @@ export interface Product {
   weight: number;
   startDate: string;
   endDate: string;
-  number?: number;
+  number: number;
 }
 
 const productsApi = createApi({

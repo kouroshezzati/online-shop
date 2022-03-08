@@ -47,10 +47,10 @@ export default function ProductList({
   const [product, setProduct] = useState<Product[]>([]);
 
   const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = ({
-    target: { value },
+    target: { value, max },
   }) => {
     const weights: number[] = [];
-    if (!data || data?.length < 2) {
+    if (!data || data?.length < 2 || +value > +max) {
       return null;
     }
 
@@ -68,7 +68,10 @@ export default function ProductList({
   };
   // eslint-disable-next-line eqeqeq
   const _products = product.length == 0 ? data : product;
-
+  let maxProductNumber = 0;
+  if (data?.length) {
+    data.forEach((product) => (maxProductNumber += +product.number));
+  }
   return (
     <div>
       {isLoading && <Spinner />}
@@ -79,10 +82,11 @@ export default function ProductList({
         <Input
           placeholder='Number of items'
           type='number'
+          max={maxProductNumber}
           onChange={onChangeHandler}
         />
+        <div>total products is: {maxProductNumber}</div>
       </InputWrapper>
-
       {isSuccess &&
         _products &&
         (theme == 'grid' ? (
