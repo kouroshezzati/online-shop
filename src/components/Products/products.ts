@@ -17,10 +17,18 @@ const productsApi = createApi({
     baseUrl: BASE_URL,
   }),
   tagTypes: ['Product'],
+
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], void>({
       query: () => `products`,
       providesTags: ['Product'],
+      transformResponse: (response: Product[], meta, arg) => {
+        //filter the expired items
+        if (!Array.isArray(response)) return response;
+        return response.filter(
+          (product) => new Date(product.endDate).getTime() > Date.now()
+        );
+      },
     }),
     getProduct: builder.query<Product, string>({
       query: (id) => `products/${id}`,
