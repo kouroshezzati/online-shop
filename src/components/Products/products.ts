@@ -25,6 +25,10 @@ const productsApi = createApi({
       transformResponse: (response: Product[], meta, arg) => {
         //filter the expired items
         if (!Array.isArray(response)) return response;
+        response = response.map((product) => ({
+          ...product,
+          weight: +product.weight,
+        }));
         return response.filter(
           (product) => new Date(product.endDate).getTime() > Date.now()
         );
