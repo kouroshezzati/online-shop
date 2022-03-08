@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { RootState } from '../../store';
 import { User } from '../../User';
+import { BASE_URL } from '../../utils/constants';
 
 export interface LoginRequest {
   email: string;
@@ -14,7 +15,7 @@ export interface UserResponse {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3001/',
+    baseUrl: BASE_URL,
     prepareHeaders: (headers, { getState }) => {
       const { token } = (getState() as RootState).auth;
       if (token) {
