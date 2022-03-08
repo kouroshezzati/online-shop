@@ -10,7 +10,7 @@ import { useAuth } from './components/Login/authSlice';
 import { Spinner } from './utils/widgets';
 
 const LoginPage = lazy(() => import('./pages/Login'));
-const DashboardPage = lazy(() => import('./pages/Dashboard'));
+const AdminPage = lazy(() => import('./pages/Admin'));
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -53,15 +53,18 @@ ReactDOM.render(
               path='/'
               element={
                 <PrivateRoute>
-                  <DashboardPage />
+                  <AdminPage />
                 </PrivateRoute>
               }
             />
-            <Route path='/login' element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            } />
+            <Route
+              path='/login'
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
           </Routes>
         </Suspense>
       </BrowserRouter>

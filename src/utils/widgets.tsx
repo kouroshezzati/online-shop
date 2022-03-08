@@ -103,4 +103,18 @@ export const Error = styled.div`
   color: red;
   text-align: center;
   padding: 1rem;
-`
+`;
+
+export const ProductGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  grid-row-gap: 10px;
+  align-content: center;
+  > div {
+    text-align: center;
+    padding: 9px 0;
+  }
+  .header {
+    background-color: #ececb9;
+  }
+`;
