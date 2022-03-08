@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Simple shopping website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is build to show product items base on weight of each product.
+to add product go to admin page with root path 'http://localhost:3000/', but
+you need to login before go to admin page.
+for login enter `aco@gmail.com` for email input and `123` for password input;
+you can add a product and the number of the product that are exist. we assume all
+the products are `active` and are not expired.
+there are already 3 product types exist in the app, but you can add as much as you want.
+the 'http://localhost:3000/shop/' is the page that's public and you can visit the products
+and also define how many items to be shown, by default it shows all the items without any filter
+base on weight.
 
 ## Available Scripts
 
@@ -30,17 +39,3 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

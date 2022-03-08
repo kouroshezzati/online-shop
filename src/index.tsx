@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './store';
 import { useAuth } from './components/Login/authSlice';
 import { Spinner } from './utils/widgets';
+import ShoppingPage from './pages/Shopping';
 
 const LoginPage = lazy(() => import('./pages/Login'));
 const AdminPage = lazy(() => import('./pages/Admin'));
@@ -65,6 +66,7 @@ ReactDOM.render(
                 </PublicRoute>
               }
             />
+            <Route path='/shop' element={<ShoppingPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
