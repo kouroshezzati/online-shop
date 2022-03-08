@@ -35,42 +35,44 @@ export default function AddProduct() {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        placeholder='Name'
-        {...register('name', { required: 'Name is requried!' })}
-      />
-      <Error>{errors.name?.message}</Error>
-      <Input
-        placeholder='Price'
-        {...register('price', { required: 'Price is requried!' })}
-      />
-      <Error>{errors.price?.message}</Error>
-      <Input
-        placeholder='Weight'
-        type='number'
-        {...register('weight', { required: 'Weight is requried!' })}
-      />
-      <Error>{errors.weight?.message}</Error>
-      <Input
-        placeholder='Start date'
-        {...register('startDate', { required: 'Start date is requried!' })}
-      />
-      <Error>{errors.startDate?.message}</Error>
-      <Input
-        placeholder='End date'
-        {...register('endDate', { required: 'End date is requried!' })}
-      />
-      <Error>{errors.endDate?.message}</Error>
-      <Input
-        placeholder='Number of product'
-        type='number'
-        min={1}
-        {...register('number')}
-      />
-      <FormButton disabled={isLoading}>
-        {isLoading && <Spinner data-testid='spinner' />} <span>Add</span>
-      </FormButton>
-    </Form>
+    <div>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          placeholder='Name'
+          {...register('name', { required: 'Name is requried!' })}
+        />
+        <Error>{errors.name?.message}</Error>
+        <Input
+          placeholder='Price'
+          {...register('price', { required: 'Price is requried!' })}
+        />
+        <Error>{errors.price?.message}</Error>
+        <Input
+          placeholder='Weight'
+          type='number'
+          {...register('weight', { required: 'Weight is requried!' })}
+        />
+        <Error>{errors.weight?.message}</Error>
+        <Input
+          placeholder='Start date'
+          {...register('startDate', { required: 'Start date is requried!' })}
+        />
+        <Error>{errors.startDate?.message}</Error>
+        <Input
+          placeholder='End date'
+          {...register('endDate', { required: 'End date is requried!' })}
+        />
+        <Error>{errors.endDate?.message}</Error>
+        <Input
+          placeholder='Number of product'
+          type='number'
+          min={1}
+          {...register('number')}
+        />
+        <FormButton disabled={isLoading}>
+          {isLoading && <Spinner data-testid='spinner' />} <span>Add</span>
+        </FormButton>
+      </Form>
+    </div>
   );
 }
