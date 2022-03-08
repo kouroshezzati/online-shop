@@ -24,12 +24,14 @@ export default function AddProduct() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<InputsType>();
   const [addProduct, { isLoading }] = useAddProductMutation();
 
   const onSubmit: SubmitHandler<InputsType> = (data) => {
     addProduct(data);
+    reset();
   };
 
   return (
